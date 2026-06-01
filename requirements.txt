@@ -1,0 +1,5 @@
+jupyterlab
+numpy
+matplotlib
+tensorrt
+opencv-python
