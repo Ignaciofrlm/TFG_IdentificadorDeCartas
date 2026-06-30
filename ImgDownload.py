@@ -7,11 +7,11 @@ import os
 #if not os.path.exists("ImgTrainingClases/" + i["name"]):
                     #os.mkdir("ImgTrainingClases/" + i["name"])
 
-total = 335278
-inicio = 8850
+total = 115800
+inicio = 0
 doble_layouts = ["transform","modal_dfc","double_faced_token","reversible_card"]
 
-with open("all-cards-20250121102112.json", 'r',encoding="utf8") as jsoncartas:
+with open("default-cards-20260612210941.json", 'r',encoding="utf8") as jsoncartas:
     jsonstring = jsoncartas.read()
     data = json.loads(jsonstring)
     total = len(data)
@@ -21,23 +21,29 @@ with open("all-cards-20250121102112.json", 'r',encoding="utf8") as jsoncartas:
             j += 1
             per = (j*100/total)
             print(f"\r{j} of {total} ({per}%) cardId:"+ i["id"] + " layout: " + i["layout"] + "         ",end = ' ', flush = True)
-
+            
             if i["layout"] == "art_series":
-                if i["card_faces"][0].get("image_uris"):
-                    img = requests.get(i["card_faces"][0]["image_uris"]["small"])
-                    with open("E:\ArtSeries\\" + i["id"] + ".jpg", 'wb') as file:
-                        file.write(img.content)  
+                if not os.path.exists(".\ArtSeries\\" + i["id"] + "\\" + i["id"] + ".jpg"):
+                    if i["card_faces"][0].get("image_uris"):
+                        img = requests.get(i["card_faces"][0]["image_uris"]["small"])
+                        os.makedirs(".\ArtSeries\\" + i["id"], exist_ok=True)
+                        with open(".\ArtSeries\\" + i["id"] + "\\" + i["id"] + ".jpg", 'wb') as file:
+                            file.write(img.content)  
             elif i["layout"] in doble_layouts:
                 face = 1
                 for f in i["card_faces"]:
-                    img = requests.get(f["image_uris"]["small"])
-                    with open("E:\DatasetTFG\\" + i["id"] + f"-face{face}" + ".jpg", 'wb') as file:
-                        file.write(img.content)   
-                    face += 1    
+                    if not os.path.exists(".\Dataset\\" + i["id"] + f"-face{face}"):
+                        img = requests.get(f["image_uris"]["small"])
+                        os.makedirs(".\Dataset\\" + i["id"] + f"-face{face}", exist_ok=True)
+                        with open(".\Dataset\\" + i["id"] + f"-face{face}" + "\\" + i["id"] + f"-face{face}" + ".jpg", 'wb') as file:
+                            file.write(img.content)   
+                        face += 1    
             else:
-                img = requests.get(i["image_uris"]["small"])
-                with open("E:\DatasetTFG\\" + i["id"] + ".jpg", 'wb') as file:
-                    file.write(img.content)      
+                if not os.path.exists(".\Dataset\\" + i["id"] + "\\" + i["id"] +".jpg"):
+                    img = requests.get(i["image_uris"]["small"])
+                    os.makedirs(".\Dataset\\" + i["id"], exist_ok=True)
+                    with open(".\Dataset\\" + i["id"] + "\\" + i["id"] +".jpg", 'wb') as file:
+                        file.write(img.content)      
 
             #time.sleep(0.1)
 

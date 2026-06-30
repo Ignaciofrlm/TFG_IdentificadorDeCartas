@@ -9,7 +9,7 @@ print(len(ids))
 
 n = []
 
-with open("all-cards-20250121102112.json", 'r',encoding="utf8") as jsoncartas:
+with open("default-cards-20260612210941.json", 'r',encoding="utf8") as jsoncartas:
     jsonstring = jsoncartas.read()
     data = json.loads(jsonstring)
     total = len(ids)
