@@ -1,4 +1,4 @@
-El proyecto se ha desarrollado en Ubuntu sobre WSl, en un contenedor de docker.
+El proyecto se ha desarrollado en Ubuntu-WSl, en un contenedor de docker.
 
 Las carpetas contienen distintos archvos comprimidos por volumenes con el uso de 7zip. No son archivos necesarios ya que se pueden generar por medio del codigo pero si se quieren usar ya generados se pueden descomprimir con 7zip.
 La carpeta de Modelos contiene un unico modelo que se debe extraer en la ruta ./Modelos
