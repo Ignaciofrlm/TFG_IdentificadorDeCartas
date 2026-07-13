@@ -1,5 +1,4 @@
-El proyecto se ha desarrollado en WSl-Ubuntu desde donde se ha levantado en un contenedor de docker, para usarse se recomienda levantar el docker, no es necesario que sea desde WSl-Ubuntu, aunque si se buildea desde Windows tensorflow no detectará las GPUs disponibles y el entreno será muy lento. En caso de que no se detecte la GPU o GPUs, se recomienda revisar este link: https://www.tensorflow.org/install/gpu.
-
+El proyecto se ha desarrollado en WSl-Ubuntu desde donde se ha levantado en un contenedor de docker, para usarse se recomienda levantar el docker, no es necesario que sea desde WSl-Ubuntu, aunque si se construye desde Windows tensorflow no detectará las GPU disponibles y el entreno será muy lento. En caso de que no se detecte la GPU, se recomienda revisar este link: https://www.tensorflow.org/install/gpu.
 
 
 Las carpetas contienen distintos archivos comprimidos por volúmenes con el uso de 7zip. No son archivos necesarios ya que se pueden generar por medio del código pero si se quieren usar ya generados se pueden descomprimir con 7zip.
